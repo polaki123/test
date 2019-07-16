@@ -1,0 +1,16 @@
+1.How to handle diedTheads
+2.How to decide QueueSize & no of Threads
+3.Hot to restart a task in case of failure/how to set retry count
+4.How to notify if a task is rejected from the Threadpool
+5.How to know whether task is completed or not
+6.If the thread dying due to unchecked exception, how to recreate threads
+7. How the threads communicate with in the threads in TP
+8.How to interrupt a long lasting Thread
+9.
+
+
+
+Your Scenario: corePoolSize = 5, maximumPoolSize = 10, workqueue = 10
+Suppose all your worker threads are busy, then the most workqueue can hold is 10
+
+
