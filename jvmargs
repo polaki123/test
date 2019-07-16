@@ -1,0 +1,7 @@
+HeapDump - To analyze the Memory Leaks
+GCLogs - To find out the Objects which failed to garbage collected
+ThreadDump - to find deadlock
+
+-Xmx10m -XX:+PrintGCDetails 
+-XX:+UseParallelGC Wrapper
+-XX:+HeapDumpOnOutOfMemoryError

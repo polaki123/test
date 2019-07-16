@@ -1,0 +1,72 @@
+1.Busy waiting, eats all CPU cycles.
+public void push(Object d) {
+        while (data != null) { /* Empty while--eats CPU. */ }
+        data = d;
+    }
+    public Object pop() {
+        while (data == null) { /* Empty. */ }
+        Object d = data;
+        data = null;           /* Allow push() to break out of its loop.
+*/
+        return d;
+}
+
+
+2.Synchronized monitor: Efficient than Busywaitinng and flexible for multiple Threads.
+
+	Object full  = new Object();
+    Object empty = new Object();
+    public void push(Object d) {
+        synchronized(full) {
+            if (data != null) full.wait();
+        }
+        data = d;
+        synchronized(empty) {
+            if (data != null) empty.notify();
+        }
+    }
+    public Object pop() {
+        synchronized(empty) {
+            if (data == null) empty.wait();
+        }
+        Object o = data;
+        data = null;
+        synchronized(full) {
+            if (data == null) full.notify();
+        }
+        return o;
+    }
+
+3. Semaphore
+public class Semaphore {
+    private int counter;
+    public Semaphore() {
+        this(0);
+    }
+    public Semaphore(int i) {
+        if (i < 0) throw new IllegalArgumentException(i + " < 0");
+        counter = i;
+    }
+    /**
+     * Increments internal counter, possibly awakening a thread
+     * wait()ing in acquire().
+     */
+    public synchronized void release() {
+        if (counter == 0) {
+            this.notify();
+        }
+        counter++;
+    }
+    /**
+     * Decrements internal counter, blocking if the counter is already
+     * zero.
+     *
+     * @exception InterruptedException passed from this.wait().
+     */
+    public synchronized void acquire() throws InterruptedException {
+        while (counter == 0) {
+            this.wait();
+        }
+        counter--;
+    }
+}

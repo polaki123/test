@@ -1,0 +1,39 @@
+1) Difference between Callable and Runnable interface in Java?
+The Callable interface is similar to Runnable, in that both are designed for classes whose instances are potentially 
+executed by another thread.
+ A Runnable, however, does not return a result and cannot throw a checked exception.
+--V call() throws Exception;
+--public abstract void run();
+
+2) What is FutureTask in Java? What is benefit of using it?
+
+3) Difference between Thread.isInterrupted() and Thread.interrupt() method?
+4) How ConcurrentHashMap achieves scalability?
+5) What is Semaphore in Java?
+6) Difference between ReentrantLock and synchronized keyword in Java?
+7) What is ReadWriteLock in Java?
+8) What is busy spinning?
+9) Difference between notify() and notifyAll() in Java? When do you use notifyAll() over notify()?
+10) Difference between wait, sleep and yield in Java?
+11) Difference between Runnable vs Thread in Java?
+12) Why wait and notify methods are called from synchronized block or method in Java?
+13) What is doubled checked locking of Singleton? 
+14) Difference between LiveLock and Starvation in Java?
+15) What is daemon thread in Java? What is use of daemon threads?
+16) Why wait, notify and notifyAll are in Object class instead of Thread?
+17) Why wait method is called from loop in Java
+18) Difference between wait method and Condition object in Java?
+19) Write code for getInstance() method of thread-safe Singleton in Java?
+20) What is Java Memory Model?
+21) Can we make static method synchronized in Java?
+22) What is lock stripping?
+23) How many thread is created by Timer class?
+24) What is ThreadLocal in Java? 
+25) What is ThreadLocal memory leak in Java? How to fix that?
+26) What is race condition in Java? Have you ever faced race conditions?
+27) What is thread-safety? What are few ways to achieve thread-safety in multithreading code?
+28) Difference between synchronized method and block in Java? Which one is better?
+29) Difference between volatile and transient variable in Java?
+30) How to check if a Thread holds a Lock in Java?
+
+Read more: https://javarevisited.blogspot.com/2018/07/java-multi-threading-interview-questions-answers-from-investment-banks.html#ixzz5Zkk3GtHm

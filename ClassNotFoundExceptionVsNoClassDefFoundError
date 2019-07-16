@@ -1,0 +1,7 @@
+NoClassDefFoundError(class itself does not exists) vs ClassNotFoundException(not in classpath)
+It occurs when java runtime system doesn’t find a class definition, which is present at compile time, but missing at run time.
+
+It occurs when an application tries to load a class at run time which is not updated in the classpath.
+
+
+

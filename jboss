@@ -1,0 +1,39 @@
+Here is how I impemented it with JBoss 5.1.0 :
+
+ 
+
+1- Deploy a custom-jboss-beans.xml file :
+
+ 
+
+<deployment xmlns="urn:jboss:bean-deployer:2.0">
+
+ 
+
+   <bean name="CustomWorkManagerThreadPool" class="org.jboss.util.threadpool.BasicThreadPool">
+      <annotation>@org.jboss.aop.microcontainer.aspects.jmx.JMX(name="custom:service=CustomWorkManagerThreadPool", exposedInterface=org.jboss.util.threadpool.BasicThreadPoolMBean.class)</annotation>
+      <property name="name">CustomWorkManager</property>
+      <property name="maximumQueueSize">100</property>
+      <property name="maximumPoolSize">10</property>
+      <property name="keepAliveTime">60000</property>
+   </bean>
+
+   <bean name="CustomWorkManager" class="org.jboss.resource.work.JBossWorkManager">
+      <annotation>@org.jboss.aop.microcontainer.aspects.jmx.JMX(name="sdr:service=CustomWorkManager", exposedInterface=org.jboss.resource.work.JBossWorkManagerMBean.class)</annotation>
+      <property name="threadPool"><inject bean="CustomWorkManagerThreadPool"/></property>
+      <property name="XATerminator"><inject bean="TransactionManager" property="XATerminator"/></property>
+  </bean>
+
+ 
+
+</deployment>
+
+ 
+
+2 - Use it in code (exception handling omitted) :
+
+ 
+
+MBeanServer server = MBeanServerLocator.locateJBoss();
+WorkManager wm = (WorkManager) server.getAttribute(new ObjectName("custom:service=CustomWorkManager"), "Instance");
+wm.startWork(aWork);

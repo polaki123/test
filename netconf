@@ -1,0 +1,60 @@
+Operations
+The base protocol defines the following protocol operations:
+
+-NETCONF messages are encoded in XML
+-NETCONF message are encrypted by SSH
+-is connection oriented using TCP
+
+Operational data vs Config data
+Config data will be write over north bound interfaces (CLI,NetConf,Web..etc)
+Operational data is only status data can not be edited via NetConf
+
+RESTCONF similar to NETCONF but works on HTTP
+
+
+Operation	Description
+<get>	Retrieve running configuration and device state information
+<get-config>	Retrieve all or part of a specified configuration datastore
+<edit-config>	Edit a configuration datastore by creating, deleting, merging or replacing content
+<copy-config>	Copy an entire configuration datastore to another configuration datastore
+<delete-config>	Delete a configuration datastore
+<lock>	Lock an entire configuration datastore of a device
+<unlock>	Release a configuration datastore lock previously obtained with the <lock> operation
+<close-session>	Request graceful termination of a NETCONF session
+<kill-session>	Force the termination of a NETCONF session
+
+Java NetConf code.
+Device device = new Device("10.10.1.1", "admin", "PaSsWoRd", null);
+device.connect();
+XML rpc_reply = device.executeRPC(“get-chassis-inventory”);
+device.close();
+
+<rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" 
+     xmlns:junos="http://xml.juniper.net/junos/11.2R1/junos">
+<chassis-inventory xmlns="http://xml.juniper.net/junos/11.2R1/junos-chassis">
+<chassis junos:style="inventory">
+<name>Chassis</name>
+<serial-number>12345</serial-number>
+<description>M7i</description>
+<chassis-module> 
+...output omitted...
+</chassis>
+</chassis-inventory>
+</rpc-reply>
+
+
+
+RPC Error
+<rpc-reply xmlns="URN" xmlns:junos="URL">
+<rpc-error>
+<error-severity>error-severity</error-severity>
+<error-path>error-path</error-path>
+<error-message>error-message</error-message>
+<error-info>
+<bad-element>command-or-statement</bad-element>
+</error-info>
+<rpc-error>
+</rpc-reply>
+]]>]]>
+
+

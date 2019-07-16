@@ -1,0 +1,4 @@
+1)Submit vs execute
+ExecutorService threadExecutor = Executors.newSingleThreadExecutor();
+threadExecutor.execute(new Task());
+threadExecutor.submit(new Task());

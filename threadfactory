@@ -1,0 +1,51 @@
+ThreadFactory, will allow you to create threads in user readable formats which will be more useful in
+debugging threadpool tasks. If a thread got rejected, you can find easily in the logs.
+
+-To choose custom ThreadNames.
+ Default ThreadFactory creates thread in the common names pool-1-thread-1, pool-3-thread-3,..etc.
+ A specific threadName is very helpful in debugging the issues.
+ 
+-To handle custom Exceptions.
+ To handle custom exception. 
+ 
+-To Choose Thread Priority.
+ Default TF create threads with normal priority. But sometime you also need to create thread with High Priority. 
+ 
+-To choose b/w Thread Types.
+ The default ThreadFactory produces User Threads, it can not produce Daemon Threads.	
+
+
+ExecutorService pool = Executors.newSingleThreadExecutor(new LoggingThreadFactory());
+
+class LoggingThreadFactory extends ThreadFactory {
+   @Override
+   public Thread newThread(Runnable r) {
+     Thread t = new Thread(r);
+     t.setUnCaughtExcepitonHandler(
+         new Thread.UnCaughtExceptionHandler() {
+           public void unCaughtException(Thread t,Throwable th) {
+             log.error(e.getMesssage(),e);
+           }
+         }
+     
+     );
+   }
+}
+
+
+
+ThreadFactory customThreadfactory = new ThreadFactoryBuilder()
+                .setNamePrefix("ImageDownloadersPool-Thread").setDaemon(false)
+                .setPriority(Thread.MAX_PRIORITY)
+                .setUncaughtExceptionHandler(new UncaughtExceptionHandler() {
+                    @Override
+                    public void uncaughtException(Thread t, Throwable e) {
+                        System.err.println(String.format(
+                                "Thread %s threw exception - %s", t.getName(),
+                                e.getMessage()));
+ 
+                    }
+                }).build();
+ 
+        ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(3,
+                customThreadfactory);

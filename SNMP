@@ -1,0 +1,96 @@
+https://www.cisco.com/c/en/us/support/docs/ip/simple-network-management-protocol-snmp/7244-snmp-trap.html
+https://docstore.mik.ua/orelly/networking_2ndEd/snmp/ch10_03.htm
+
+
+SNMP Traps will be received on UDP port 162.
+Traps 2 categories
+-Generic( coldStart,warmStart,linkDown,linkUp,authenticationFailure,egpNeighbourLoss)
+-Enterprise Specific(Generic.<EnterpriseSpeicificType>)
+For example, if your enterprise number is 2789, your enterprise ID is .1.3.6.1.4.1.2789. But you can further subdivide this, defining traps with enterprise IDs such as .1.3.6.1.4.1.2789.5000, 
+.1.3.6.1.4.1.2789.5001, and so on.
+
+SNMP v1 Trap TRAP-TYPE, in v2 NOTIFICATION-TYPE, in V3 its v2c trap with added authentication functionality.
+
+
+
+Trap PDU SNMPv1
+
+Enterprise—Identifies the type of managed object that generates the trap.
+Agent address—Provides the address of the managed object that generates the trap.
+Generic trap type—Indicates one of a number of generic trap types.
+Specific trap code—Indicates one of a number of specific trap codes.
+Time stamp—Provides the amount of time that has elapsed between the last network reinitialization and generation of the trap.
+Variable bindings—The data field of the trap that contains PDU. Each variable binding associates a particular MIB object instance with its current value.
+
+
+sysUpTime—This is the same as Time stamp in SNMPv1 trap.
+snmpTrapOID  —Trap identification field. For generic traps, values are defined in RFC 1907, for vendor specific traps snmpTrapOID is essentially a concatenation of the SNMPv1 Enterprise parameter and two additional sub-identifiers, '0', and the SNMPv1 Specific trap code parameter.
+VarBindList—This is a list of variable-bindings.
+
+SNMPv2c Cisco specific trap:
+4d23h: SNMP: Queuing packet to 172.17.246.162 
+4d23h: SNMP: V2 Trap, reqid 2, errstat 0, erridx 0 
+ sysUpTime.0 = 43053404 
+ snmpTrapOID.0 =  
+ clogHistoryEntry.2.958 = SYS 
+ clogHistoryEntry.3.958 = 6 
+ clogHistoryEntry.4.958 = CONFIG_I 
+ clogHistoryEntry.5.958 = Configured from console by vty0 (10.10.10.10) 
+ clogHistoryEntry.6.958 = 43053403
+ 
+ 
+ SNMPv1Generic Trap OID- .1.3.6.1.4
+ .1.3.6.1.6.3.1.1.5.1->5.6
+ coldStart,warmStart,linkDown,linkUp,authenticationFailure,egpNeighbourLoss
+ 
+ <SNMPv2c Generic Trap OID>.<vendor enterprise>
+  .1.3.6.1.6.3.1.1.5.1.1 3 6 1 4 9
+
+SNMPV2C MIBS
+------------
+System Group
+Interface Group
+IPGroup
+ICMP Group
+TCP Group
+UDP Group
+
+Juniper Specific Traps
+----------------------
+jnxPowerSupplyFailure
+jnxFanFailure
+jnxOverTemperature
+
+SNMP Traps
+----------
+Enterprise: Identifies the type of managed object that generates the trap.
+Generic trap type: Indicates one of a number of generic trap types.
+Specific trap code: Indicates one of a number of specific trap codes.
+
+
+Primitive types: INTEGER, OCTET STRING, OBJECT IDENTIFIER, NULL
+Constructor types: SEQUENCE, SEQUENCE OF
+Defined types: NetworkAddress, IpAddress, Counter, Gauge, TimeTicks, Opaque
+
+SNMP Data Types
+---------------
+Integer32
+INTEGER
+Unsigned32
+Gauge32    -> Non-negative integers
+Counter32   
+Counter64
+TimeTicks
+
+SNMP Errors
+-----------
+TOOBig
+NoSuchName
+BadValue
+READONLY
+
+
+
+
+
+  

@@ -1,0 +1,50 @@
+HashMap get/put complexity
+--------------------------
+https://www.linkedin.com/pulse/10-things-java-developer-should-know-hashmap-chinmay-parekh
+
+- The best case is O(1)
+if the bucket has only one element.
+- The worst case is O(n)
+if the bucket has n elements, we have to traverse the n elements
+-amortized constant execution us always O(n)+
+-java 8 HashMap implemented using Tree so the complexity is O(logn)
+
+
+Add element into arrayList, if array is full, the array has be doubled and then copy the element.
+so,copying the old items into new will actuall takes O(n), so its averate is O(n)+1
+An amortized constant execution time of O(n) is often written as O(n)+
+
+1.HashMap<Integer,V> --  O(1)
+2.HashMap<String,V> - 
+3.HashMap<List<E>,V> - if List has K lements, O(K) is the worstcase, O(K+logN)
+
+HashMap points
+--------------
+1) Internals of lookup process:
+Lookup process is at the heart of HashMap and almost all the complexity of hashMap lies here. The lookup process consists of 2 steps:
+Step# 1: Quickly determine the bucket number in which this element may reside (using key.hashCode()).
+Step# 2: Go over the mini-list and return the element that matches the key (using key.equals()).
+Note the the value object is not used in any of the calculations within hashMap.
+
+(2) Immutability of keys:
+Key Should be Immutable. If use Object as Key and if you change one of the parameter of the object, you cant be able to fetch the
+Key in future.
+
+(3) Load factor and resize:
+-In the new Bucket the nodes get reversed.
+
+(4) Worst-case performance:
+best o(1) worst o(n) , java 8 o(logN):Binary Search tree
+(5) Collisions:
+Collisions happen when 2 distinct keys generate the same hashCode() value. Multiple collisions are the result of bad hashCode() algorithm.
+(6) Adding duplicate entries into hashMap:
+(7) Concurrency:
+Do not use HashMap in multi-threaded environment.
+(9) Some specialized hashMaps for specific purposes:
+  ConcurrentHashMap: HashMap to be used in multithreaded applications.
+  EnumMap: HashMap with Enum values as keys.
+  LinkedHashMap: HashMap with predictable iteration order (great for FIFO/LIFO caches)
+
+  
+  
+  

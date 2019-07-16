@@ -1,0 +1,17 @@
+1.AutomicIntgers
+-To perform thread safe operations in multithreaded environment.
+-AutomicInteger {             Integer {
+   volatile int value;          int value;
+ }                           }
+ 
+private volatile int counter;
+
+public int getNextUniqueIndex() {
+    return counter++; 
+}
+
+
+private AtomicInteger counter;
+public int getNextUniqueIndex() {
+    return counter.getAndIncrement();
+}

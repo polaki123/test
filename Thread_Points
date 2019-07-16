@@ -1,0 +1,40 @@
+I.Therad Sates
+------------
+1.New       - Thread t = new Thead();
+2.Runnable  - t.start();
+
+3.Wait(Runnable->wait)- 	  
+   o.wait()->(Runnable->Wait)->o.notify()-> (Wait->Blocked)
+   ,t.join(),LockSupport.park()
+
+4.TimelyWait(Runnable->wait) -
+   Thread.sleep(1000)  -> Runnable after sleeping time expires.
+   o.wait(1000)->         o.notify(Wait->Blocked)
+   t.join(1000)
+   lockSupport.parkNanos()
+   lockSupport.unit()
+
+5.Blocked(Runnable ->Blocked) -Wait for lock to enter into sync block/to reenter sync block
+ -Thread about to enter into Sync block
+6.Termiated - After executing run()
+
+II) Wait(o.wait) vs Blocked(o.notify)
+-o.wait(), makes the thread in wait state till another thread invokes o.notify() on it.
+-Blocked state means, the thread is about to enter into sync block.
+-Wait, releases monitor on object o
+
+th.join()
+let's say our main thread starts the threads t1 and t2. Now, when t1.join() is called,
+the main thread suspends itself till thread t1 dies and then resumes itself. Similarly, when t2.join() executes, the main thread suspends itself again till the thread t2 dies and then resumes.
+
+sleep() causes the thread to definitely stop executing for a given amount of time; if no other thread or process needs to be run, the CPU will be idle (and probably enter a power saving mode).
+
+yield() basically means that the thread is not doing anything particularly important and if any other threads or processes need to be run, they should. Otherwise, the current thread will continue to run.
+
+5)th.join() vs Countdownlatch
+  main() {
+    t1.join() -> main thread suspends until t1 finishs
+  }
+-th.join(), basically waits for other thread to finish.
+-countDownLatch - 
+  

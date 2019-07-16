@@ -1,0 +1,22 @@
+ssh root@10.219.30.105
+cli
+edit
+
+
+set vlans WIFI vlan-id 1
+set vlans student vlan-id 10
+set vlans backoffice vlan-id 20
+set vlans core vlan-id 30
+
+set interfaces ge-0/0/0 unit 0 family ethernet-switching vlan members WIFI
+set interfaces ge-0/0/1 unit 0 family ethernet-switching vlan members WIFI
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members WIFI
+
+set interfaces vlan unit 1 family inet address 192.168.1.2/24
+
+DHCP
+ARP
+BGP
+
+UTP
+IDP

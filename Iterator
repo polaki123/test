@@ -1,0 +1,21 @@
+1)fail-fast vs fail-safe
+ fail-fast iterators throws concurrentmodification exception since they work on same copy of collection.
+ fail-safe iterators wont throw concurrentmodification since they work on different copy.
+ 
+2)List Iterator can traverse in both directions
+  ListIterator {
+    previous()
+    nex()
+    hasPrevious()
+    nextIndex(), previousIndex(),remove()
+  }
+ 
+3)Why list iterator has add()
+  since its implementation of List we can traverse both sides we know the current position
+  also it does not harm the order
+
+
+
+
+   ArrayList {
+       private class Itr implements Iterator<E> {

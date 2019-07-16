@@ -1,0 +1,53 @@
+I)java.util.concurrent.ArrayBlockingQueue<E>
+java.util.concurrent.ConcurrentLinkedQueue<E>
+java.util.concurrent.DelayQueue<E>
+java.util.concurrent.LinkedBlockingQueue<E>
+java.util.concurrent.PriorityBlockingQueue<E>
+java.util.concurrent.SynchronousQueue<E>
+
+II)
+Bounded -    limited size
+
+UnBounded -  No size limit. Does not case any task rejection 
+
+III)
+
+
+
+1.ArrayBlockingQueue vs LinkedBlocingQueue(optinally bounded)
+
+ArrayBlockingQueue - Bounded.
+LinkedBlockingQueue,LinkedTransferQueue - UnBounded blocking Queue.
+
+Can an unbounded queue be a blocking queue ? 
+
+
+
+public LinkedBlockingQueue(int capacity) 
+{
+        if (capacity < = 0) throw new IllegalArgumentException();
+        this.capacity = capacity;
+        last = head = new Node< E >(null);   // Maintains a underlying linkedlist. ( Use when size is not known )
+}
+
+static class Node<E> {
+    E item;
+    Node<E> next;
+    Node(E x) { item = x; }
+}
+
+public ArrayBlockingQueue(int capacity, boolean fair) 
+{
+            if (capacity < = 0)
+                throw new IllegalArgumentException();
+            this.items = new Object[capacity]; // Maintains a underlying array
+            lock = new ReentrantLock(fair);
+            notEmpty = lock.newCondition();
+            notFull =  lock.newCondition();
+}
+
+
+
+-add()/remove() : Throws Exception 
+-put()/take() : blocks
+-offer(e)/poll() - Spceial value

@@ -1,0 +1,84 @@
+1. What do we understand by the term concurrency?
+2. What is the difference between processes and threads?
+3. In Java, what is a process and a thread?
+4. What is a scheduler?
+5. How many threads does a Java program have at least?
+6. How can a Java application access the current thread?
+7. What properties does each Java thread have?
+8. What is the purpose of thread groups?
+9. What states can a thread have and what is the meaning of each state?
+10. How do we set the priority of a thread?
+11. How is a thread created in Java?
+12. How do we stop a thread in Java?
+13. Why should a thread not be stopped by calling its method stop()?
+14. Is it possible to start a thread twice?
+15. What is the output of the following code?
+16. What is a daemon thread?
+17. Is it possible to convert a normal user thread into a daemon thread after it has been started?
+18. What do we understand by busy waiting?
+19. How can we prevent busy waiting?
+20. Can we use Thread.sleep() for real-time processing?
+21. How can a thread be woken up that has been put to sleep before using Thread.sleep()?
+22. How can a thread query if it has been interrupted?
+23. How should an InterruptedException be handled?
+24. After having started a child thread, how do we wait in the parent thread for the termination of the child thread?
+25. What is the output of the following program?
+26. What happens when an uncaught exception leaves the run() method?
+27. What is a shutdown hook?
+28. For what purposes is the keyword synchronized used?
+29. What intrinsic lock does a synchronized method acquire?
+30. Can a constructor be synchronized?
+31. Can primitive values be used for intrinsic locks?
+32. Are intrinsic locks reentrant?
+33. What do we understand by an atomic operation?
+34. Is the statement c++ atomic?
+35. What operations are atomic in Java?
+36. Is the following implementation thread-safe?
+37. What do we understand by a deadlock?
+38. What are the requirements for a deadlock situation?
+39. Is it possible to prevent deadlocks at all?
+40. Is it possible to implement a deadlock detection?
+41. What is a livelock?
+42. What do we understand by thread starvation?
+43. Can a synchronized block cause thread starvation?
+44. What do we understand by the term race condition?
+45. What do we understand by fair locks?
+46. Which two methods that each object inherits from java.lang.Object can be used to implement a simple producer/consumer scenario?
+47. What is the difference between notify() and notifyAll()?
+48. How it is determined which thread wakes up by calling notify()?
+49. Is the following code that retrieves an integer value from some queue implementation correct?
+50. Is it possible to check whether a thread holds a monitor lock on some given object?
+51. What does the method Thread.yield() do?
+52. What do you have to consider when passing object instances from one thread to another?
+53. Which rules do you have to follow in order to implement an immutable class?
+54. What is the purpose of the class java.lang.ThreadLocal?
+55. What are possible use cases for java.lang.ThreadLocal?
+56. Is it possible to improve the performance of an application by the usage of multi-threading? Name some examples.
+57. What do we understand by the term scalability?
+58. Is it possible to compute the theoretical maximum speed up for an application by using multiple processors?
+59. What do we understand by lock contention?
+60. Which techniques help to reduce lock contention?
+61. Which technique to reduce lock contention can be applied to the following code?
+62. Explain by an example the technique lock splitting.
+63. What kind of technique for reducing lock contention is used by the SDK class ReadWriteLock?
+64. What do we understand by lock striping?
+65. What do we understand by a CAS operation?
+66. Which Java classes use the CAS operation?
+67. Provide an example why performance improvements for single-threaded applications can cause performance degradation for multi-threaded applications.
+68. Is object pooling always a performance improvement for multi-threaded applications?
+69. What is the relation between the two interfaces Executor and ExecutorService?
+70. What happens when you submit() a new task to an ExecutorService instance whose queue is already full?
+71. What is a ScheduledExecutorService?
+72. Do you know an easy way to construct a thread pool with 5 threads that executes some tasks that return a value?
+73. What is the difference between the two interfaces Runnable and Callable?
+74. Which are use cases for the class java.util.concurrent.Future?
+75. What is the difference between HashMap and Hashtable particularly with regard to thread-safety?
+76. Is there a simple way to create a synchronized instance of an arbitrary implementation of Collection, List or Map?
+77. What is a semaphore?
+78. What is a CountDownLatch?
+79. What is the difference between a CountDownLatch and a CyclicBarrier?
+80. What kind of tasks can be solved by using the Fork/Join framework?
+81. Is it possible to find the smallest number within an array of numbers using the Fork/Join-Framework?
+82. What is the difference between the two classes RecursiveTask and RecursiveAction?
+83. Is it possible to perform stream operations in Java 8 with a thread pool?
+84. How can we access the thread pool that is used by parallel stream operations?

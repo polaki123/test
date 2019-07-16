@@ -1,0 +1,6 @@
+1.
+public LinkedBlockingQueue(Collection<? extends E> c)
+E and its subTypes(Ex: ? extends Number)
+
+public int drainTo(Collection<? super E> c)
+E and its super Types

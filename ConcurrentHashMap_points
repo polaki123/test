@@ -1,0 +1,109 @@
+Bucket Index calcuation
+-----------------------
+int h = hashCode()
+int index = h & length-1 =  h% (len-1)
+
+
+1.ConcurrentHashMap: 
+It allows concurrent access to the map. Part of the map called Segment (internal data structure) 
+is only getting locked while adding or updating the map. So ConcurrentHashMap allows concurrent threads to read the
+value without locking at all. This data structure was introduced to improve performance.
+
+Concurrency-Level: 
+Defines the number which is an estimated number of concurrently updating threads. 
+The implementation performs internal sizing to try to accommodate this     many threads.   
+
+Load-Factor: It's a threshold, used to control resizing.
+
+Initial Capacity: The implementation performs internal sizing to accommodate these many elements.
+
+A ConcurrentHashMap is divided into number of segments, and the example which I am explaining here used default as 32 
+on initialization.
+
+CHM internally devided into 32 segments in which at most 32 thread can run at at time
+
+protected static final class Segment {
+  protected int count;
+  protected synchronized int getCount() {
+    return this.count;
+  }
+  protected synchronized void synch() {}
+}
+
+public final Segment[] segments = new Segment[32];
+
+static class Entry implements Map.Entry{
+  protected final Object key;
+  volatile value;
+  int hash;
+  Entry next;
+}
+ 
+ 
+ table:
+ -----
+ protected transient Entry[] table;
+ 
+  ConcurrentHashMap(int capacity,int loadFactor) {
+ 			table= newTable();
+  }
+  
+  protected Entry[] newTable() {
+     return new Entry[capacity];
+  }
+  
+  put(Object k,Object v)
+  ----------------------
+  int hashVal = hash(k);
+  Segment seg = segments[hashVal&01F];
+  synchronized(seg) {
+      int index = hash&table.length-1;
+      Entry f = table[index];
+      for(Entry e=f;e.next!=null;e=e.next){
+          if(e.key==k && e.val==val) {
+             e.val=v;
+             break;
+          }
+      }
+      
+      Entry newEntry = new Entry(hash,key,value,first);
+      table[index]=newEntry;      
+      
+  }
+  
+  size()
+  ------
+  int count
+  for(int i=0;i<segments.length;i++) {
+  	 c+=segments[i].count;
+  }
+  
+  get()
+  -----
+  Object get(key){
+    int hash = hash(key);
+    Entry e = table[hash&0x1F];
+    for(Entry f=e; f.next!=null;f=f.next) {
+       if(f.key==key) {
+         return f.value;
+       }
+    }
+  }
+  
+remove(Object key) {
+   int index = hash&table.length-1;
+   Entry f = table[index];
+   for(Entry e=f;e.next!=null;e=e.next) {
+      
+   }
+
+}
+
+
+
+
+  
+  
+  
+  
+  

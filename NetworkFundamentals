@@ -1,0 +1,16 @@
+OSI Model
+
+ 7.Application    
+ 6.Presentation
+ 5.Session
+ 4.Transport  Segment
+ 3.Network(packet)
+ 2.DataLink(Frame)   
+ 1.Physical   bits
+ 
+ TCP/IP Model
+  4.Application (Persentation,Session)  SNMP
+  3.Transport							UDP
+  2.Internet Layer (NetworkLayer)	    IP
+  1.Network Interface Layer(DLL+PL)  	10BaseT
+

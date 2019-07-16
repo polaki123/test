@@ -1,0 +1,5 @@
+1.Semaphore: 
+  Counting Semaphroe conceptually maintains permits.
+  basically, restricts the threads and make sure only one thread can access the crtical resource at at time.
+Busy waiting,  it can consume all the available CPU cycles
+

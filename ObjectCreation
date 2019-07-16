@@ -1,0 +1,17 @@
+1.Object creation in java(5 ways)
+  Employee e = new Employee()
+  
+2.Employee e = Employee.class.newInstance();
+
+3.Employee e = (Employee)e.clone()
+
+4.Employee emp2 = (Employee) Class.forName("org.programming.mitra.exercises.Employee")
+                               .newInstance();
+
+5.ObjectOuputStream out = new ObjectOutputStream(new FileOutputStream("c:/file));
+  out.write(emp);
+  
+  ObjectInputStream in = new ObjectInputStream(new FileInputStrea("c:/file));
+  Employee e = (Employee)in.read();
+  
+  

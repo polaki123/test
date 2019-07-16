@@ -1,0 +1,121 @@
+single tone using Enums
+
+1.How Juniper Devices will be identified
+-SysObjeectId
+-SNMP Version v2c
+-GET/SET/GETNEXT/GETBULk
+
+commString PDUTYPE varbinds
+public SET oid:value,oid:value
+INFORM-> will send acknwldgement
+SNMP->UDP, Application Layer Protoclol
+
+APSTNDP
+TCP/IP model
+
+N/wLaer-> IP Address
+DL layer
+Physycial Layer-> MAC Address
+IPv4,IPv6
+
+
+1) What is Spring IOC Container ?
+2) Does Singleton from Spring Container is thread safe?
+3) Why Spring MVC is better than Struts?
+4) What is Spring Integration?
+5) How to call remote method by RMI using Spring
+6) What scheduling feature Spring framework provides?
+7) How do you make a Singleton bean to lazy load in ApplicationContext which loads all Singleton beans eagerly during startup?
+8) Does Spring Security part of Spring framework?
+9) How to configure Spring using Annotation
+10) Which version oqf Spring have you used recently and what is difference you observed from previous spring version.
+
+Read more: https://javarevisited.blogspot.com/2011/09/spring-interview-questions-answers-j2ee.html#ixzz5ZrJbT8TZ
+
+
+Mphasis  Questions
+-------  ---------
+1.Classloaders
+  BootStrap,System,external
+2.What Classloader will do.
+ -loads class byte code,links with native code and executes it.
+3.ClassLoader functionality
+4.Can you override run() method.
+  -yes, we should overload it
+5.Thread communication within Threadpool
+  using wait/notifyAll
+6.How do you create ThreadPoolExecutor
+   ExecutorService service = Executors.newFixedThreadPoolExecutor();
+7.SerialVersionID
+  will be use full while deserializing the object
+8.Volatile vs transient
+ -Volatile will make sure that all the Threads should read data from mainmemory
+ -Transient : the objects wont be serialized
+9.SerialVersionId exception ->  InvalidClassException
+
+10. Main Thread has to monitor set of threads how do you implement
+   ThreadPoolExecutor
+11.Howmany locks in java
+ ReadWriteLock.
+12.Design pattern used in ConcurrentHashMap
+
+13.How to avoid duplicates using ArrayList
+14.Comparator vs Comparable
+15. Default Garbage Collection in java - 
+    Parallel
+    
+
+
+1.Types of Containers in Spring.
+-BeanFactory container
+  Resource resource = new FileSystemResource("beans.xml");
+  BeanFactory factory = new XmlBeanFactory(resource);
+  ClassPathResource resource = new ClassPathResource("beans.xml");
+  BeanFactory factory = new XmlBeanFactory(resource);
+-ApplicationContext container
+	ApplicationContext context = new FileSystemXmlApplicationContext("beans.xml");
+	HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+2.@AutoWired
+3.How to maintain only Singleton Object
+4.ProtoType vs Singleton in Spring.
+
+5.BeanLifeCycle
+6.IOC vs DI
+-IoC is a generic term meaning rather than having the application call the methods in a framework, the framework calls 
+	implementations provided by the application.
+-DI is a form of IoC, where implementations are passed into an object through constructors/setters/service lookups, 
+   which the object will 'depend' on in order to behave correctly.
+
+
+
+Gigamon
+-------
+-Design Discovery module to discover 10K devices.
+-BlockingQueue implementation
+-Finding duplicate element in list
+-Reverse ArrayList.
+ TimeComplexity
+Spring xml vs Annotation
+
+2nd Round
+---------
+--Collections.synchronized()- what it does
+-ThreadLocal how its got used
+-LinkedHashSet
+-How it maintains the order
+-Access time is O(n) or 0(1)
+-Fail Safe/fail fast Collection
+-How ConcurrentHashMap resolves the issue of ConcurrentModificationException
+-ThreapoolExecutor
+-RejectionException
+-What happens if more threads are waiting in ThreadPool.
+-BoundedQueue/UnBoundedQueue
+-If more threads are in waiting state, how do u debug it
+-How do u find out DeadLock
+-If unboundedqueue, how do check for memory size.
+
+
+
+
+
+

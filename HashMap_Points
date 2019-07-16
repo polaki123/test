@@ -1,0 +1,48 @@
+Collision
+---------
+If more than one item falls into same index then collision happens. 
+
+Collision Solving technics
+1.Open Addressing - Liner Probing : linear search needed to find the element
+  check every free availabe address next ot it.
+  -Doble hashing
+2.Closed Addressing-
+  -Follows chain method
+  
+Load factor = No of elements/Size of Array.
+InitialCapacity:16 & loadFactor = 0.75(to get O(1) operations)
+
+Hash Function Objectives
+------------------------
+-Minimize collisions
+-Uniform distribution of hash values
+-Easy to calculate
+-Resolve any collision
+
+Searching Technics
+------------------
+1. Linear Serach - O(n)
+2.Binary Search  - O(log n) : elements should be ordered
+
+-To store each element at particular index we need large size array.
+
+ReHashing
+---------
+-If loadFactor(.75) exceeds then the hashMap become double size and copy the old elements into new
+-The elements become reverse in order since its get added at the head of the linkedList
+
+New hasfunction :  elements%size(old*2) so the elements get allocated into different buckets.  
+
+If 2 threads try to do the rehash at the sametime, then they go to infinite loop.
+
+-elements should be distributed properly so that the get() operation is O(1)
+
+-We can say that item lookup inside bucket take expected O(1) time only under the assumptions that good hashcode() function is implemented, 
+
+HashCode
+--------
+result = 37 * result + c
+@Override
+public int hashCode() {
+    return Objects.hashCode(this.firstName, this.lastName);
+}

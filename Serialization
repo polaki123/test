@@ -1,0 +1,20 @@
+1)Serialization
+Is a process of converting the object into byte streams so that it can persisted disk/file or transfer over network.
+The Byte serialization is of platform independent so that it can be desirialized on different platform.
+
+1.can be done by implementing java.io.Serializable(marker interface)
+2.java.io.NonSerializableException, if you serialize a non-serializable object.
+3.SerialVersionUID: Can be useful in the version control of deserializing the object. you serialize a object o1 and added somefild in the
+  class and try to deserialize the old one. will get java.io.invalidClassException.
+  Ex: you serialize a class Car that sits in your pc and add a new field to Car and then desearize agian you ll get InvalidClassException.
+      we need to change the serialVersionUID aswell.
+
+public class Car {
+    static final long serialVersionUID = 13435L; //assign a long value
+}
+  
+4.Transient, to ignore the certain variables in the serialization process. applicable only for class members.
+5.Transient vs Static
+  Static variable never participate in Serialiation hence they are transient only.
+6. 
+  

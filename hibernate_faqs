@@ -1,0 +1,16 @@
+DataTypes
+---------
+LOG-> To Store large Objects
+-CLOB(Character Large Object) : Store large text data.
+-BLOB(Binary LO)- Binary data like image/audio
+Size is 2GB
+
+
+@Lob
+@Column(name = "photo", columnDefinition="BLOB")
+private byte[] photo;
+
+Caching in Hibernate
+--------------------
+First-level-Cache->Session Object
+Secondlevel-cahce -> Session Factory

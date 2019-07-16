@@ -1,0 +1,28 @@
+@Unknown, if you hear that your program is stuck in production, the first thing you should do is to take the thread dump by 
+executing kill -3 and heap dump. You can later analyze those two things to find any problem. 
+For finding deadlok there are tools which can read your thread dump and say which two threads are engaged in deadlock and 
+can also point to the Java class file and line numbers.
+
+http://gceasy.io/
+
+Found one Java-level deadlock:
+=============================
+"My Thread 2":
+  waiting to lock monitor 0x0000000004b15268 (object 0x00000000d6e5ae00, a java.lang.String),
+  which is held by "My Thread 1"
+"My Thread 1":
+  waiting to lock monitor 0x0000000004b16868 (object 0x00000000d6e6f320, a java.lang.String),
+  which is held by "My Thread 2"
+
+Java stack information for the threads listed above:
+===================================================
+"My Thread 2":
+	at com.test.thread.MyDeadlock$2.run(MyDeadlock.java:25)
+	- waiting to lock <0x00000000d6e5ae00> (a java.lang.String)
+	- locked <0x00000000d6e6f320> (a java.lang.String)
+"My Thread 1":
+	at com.test.thread.MyDeadlock$1.run(MyDeadlock.java:13)
+	- waiting to lock <0x00000000d6e6f320> (a java.lang.String)
+	- locked <0x00000000d6e5ae00> (a java.lang.String)
+
+Found 1 deadlock.

@@ -1,0 +1,29 @@
+/*
+ * Use Comparable if you want to define a default (natural) ordering behaviour of the object in question, 
+  *Use Comparator if you want to define an external controllable ordering behaviour, this can override the default ordering behaviour.
+  *
+  *class Employee implements Comparable<Employee> { 
+  *NaturalOrder
+  *Collections.sort(empList);
+  	 punblic int compareTo(Employee e) {
+  	 	//Natural Order
+  	 	 this.id<id, return -1
+  	 	 this.id>id, return 1
+  	 	 this.id==id, return 0
+  	 }
+  *}
+  *
+  *class SalaryComparator implements Comparator<Employee> {
+  *  public int compare(Employee e1, Employee e2) {
+  *      e1.getSalary().compareTo(e2.getSalary());
+  *  }
+  *
+  *NamesComparator
+  *Collections.sort(empList,namesComparator);
+  *Arrays.sort()
+  *}
+  *
+  *
+  *
+  *
+ */

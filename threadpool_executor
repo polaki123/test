@@ -1,0 +1,107 @@
+ThreadpoolExecutor
+-The importnat featur is lets developer create runnables and framewrok will decide when to execute the tasks.
+FW will take care of ThreadHandling
+-It maintains various kidns of Queues storing the taks. 
+Create Task->If free Thread->Assign to Thread otherwise keep it in Queue-> If Queue is full throw RejectExecutionException.
+interface Executor {
+  execute(Runnable r);
+ 
+}
+
+ExecutorService implements Executor {
+  submit(Callable r);
+  shutDown();
+}
+
+ThreadPoolExecutor
+ScheduledThreadPoolExecutor
+
+public ThreadPoolExecutor(int corePoolSize,--> Min noof Threads in the pool.
+                          int maximumPoolSize,-->Max noof Threads in the pool.
+                          long keepAliveTime,->If the current no of Threads are > minPoolSize, howmuch time the Threds has to keep alive.
+                          TimeUnit unit,--> for prev agrument
+                          BlockingQueue<Runnable> workQueue,--> ArrayBlockingQueue,LinkedListBlockingQueue
+                          RejectedExecutionHandler handler) --> Handler when the task got rejected
+execute(Runnable)
+submit(Runnable/Callable)
+
+
+BlockingQueue
+------------
+SizeOf the Queue: bounded or unbounded
+Order Of ExecutioinTask : Should the task follow order in execution or task picked based on priority.
+
+1.LinkedBlockingQueue- The Queue is dynamic and maxsize is Integer.MAX_VALUE. It follows FIFO approach.
+LinkedBlockingQueue(int capacity).
+
+2.ArrayBlockingQueue -  Fixed size as created time.
+
+private final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 2, 0,
+    TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(2));
+-If queue is full,throws RejectedExecutionException.
+
+3.PriorityBlockingQueue- Tasks will be picked up based on priority.
+
+4.LinkedBlockingDequeue: Tasks can be added either end.
+
+DelayQueue: Every task is created with some delay. The executor will execute the task only after the delay is expired.
+DelayRunnable->setDelay()
+public class DelayedRunnable implements Runnable, Delayed {
+
+  private int length;
+  private int delay;
+
+  public DelayedRunnable(int length) {
+    super();
+    this.length = length;
+  }
+
+  public void setDelay(int delay) {
+    this.delay = delay;
+  }
+
+  public int getDelay() {
+    return delay;
+  }
+
+  @Override
+  public void run() {
+    String randomString = RandomClass.getRandomString(length);
+    System.out.println("String returned is " + randomString);
+  }
+
+  @Override
+  public long getDelay(TimeUnit unit) {
+    return unit.convert(getDelay(), TimeUnit.MILLISECONDS);
+  }
+
+  @Override
+  public int compareTo(Delayed another) {
+    int delay1 = getDelay();
+    int delay2 = ((DelayedRunnable) another).getDelay();
+    return delay1 - delay2;
+  }
+}
+
+SynchronousQueue: Will not hold any task instead it posts the task immediatly.
+
+ThreadFactory:
+--------------
+Creates Thread and returns the Object on demand
+class SimpleThredFactory implements ThreadFactory {
+   public Thread newThread(Runnable r) {
+       return new Thread(r);
+   }
+}
+
+AtomicInteger- can use them in ThreadSafety Scenarios
+No need to use synchronized & volatile keywords.
+private AtomicInteger count = new AtomicInteger(0);
+public int updateCounter() {
+    return count.incrementAndGet();
+}
+
+
+
+
+	                          

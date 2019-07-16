@@ -1,0 +1,33 @@
+OPPS Design
+-DRY(Do not repeat yourself)
+-Device Conquere(Devide the file into multiple parts)
+-Expect Change(Need change)
+
+
+SOLID principles
+An Application should have single responsibility.
+S- Single Responsibility Principle
+   A class should have only one reason to change.
+ 
+ public class Task {
+   public void downLoadFile(String loc);
+   public void parseTheFile(File file);
+   public void persistData(Data data);
+ }  
+   
+   
+O - Open Close Principle.
+  interface shape{				class Rectangle : shape {      class Circle: shape { 
+    public void draw();           public void draw();               public void draw();
+  }								}								}
+L -  User inheritence only if the super class is replacable by subclass
+
+I - Interface segregate Principle
+    Make sure single interface can be implemented by many classes with change the code
+    
+D-  Dependency Inversion Principle
+    Depend on only interfaces/abstractions not on the concerete classes.
+    
+interface Reader {    interface Writer{        void copy(Wrier w,Reader r) {				
+    void read();			 void write();          
+}					   }						}

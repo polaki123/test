@@ -1,0 +1,20 @@
+Types of Enterprise Java Beans:
+There are two main types of  EJBs
+1- Session Beans
+2- Message Driven Beans
+
+1- Session Beans
+Stateful  Session Bean
+----------------------
+-Shopping Cart
+-Is tied to particular client always.
+
+Stateless Session Bean
+-They wont store clients Conversational State. After processing ones client request, if the next 
+request comes,again new bean will process this request.
+
+Single tone Session Bean
+-Single instacne will be created for entire application and its shared across all applications.
+
+When to Use Enterprise Java Beans EJB
+

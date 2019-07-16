@@ -1,0 +1,86 @@
+1)DI vs IOC
+-IOC is generic term
+-DI injecting dependinces @runtime setter &Constructor
+2)What is difference between component and service?
+3)Bean Scopes
+ -Singleton, Only one instance per spring container(Default)
+ -ProtoType: A new instance everytime request is initiated.
+ -Request: Single bean instance for HTTP request
+ -Session, Single bean instance for HTTP session 
+ -Global Session, Single bean instance per global HTTP session
+ 
+4)How to define spring bean scope
+  beans.xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+  
+       <bean id="demoBean" class="com.howtodoinjava.application.web.DemoBean" scope="session" />
+</beans>
+
+@Service
+@Scope("session")
+public class DemoBean
+{
+   //Some code
+}
+
+Spring Bean Autowiring – @Autowired
+-----------------------------------
+The autowiring functionality has five modes. These are ‘no‘, ‘byName‘, ‘byType‘, ‘constructor‘, and ‘autodetect‘. 
+The default mode is “no” i.e. by default autowiring is turned off in traditional XML based configuration
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+1) What is Spring IOC Container ?
+2) Does Singleton from Spring Container is thread safe?
+3) Why Spring MVC is better than Struts?
+4) What is Spring Integration?
+5) How to call remote method by RMI using Spring
+6) What scheduling feature Spring framework provides?
+7) How do you make a Singleton bean to lazy load in ApplicationContext which loads all Singleton beans eagerly during startup?
+8) Does Spring Security part of Spring framework?
+9) How to configure Spring using Annotation
+10) Which version of Spring have you used recently and what is difference you observed from previous spring version.
+
+Read more: https://javarevisited.blogspot.com/2011/09/spring-interview-questions-answers-j2ee.html#ixzz5ZrJbT8TZ
+
+
+Mphasis  Questions
+-------  ---------
+1.Classloaders
+2.What Classloader will do.
+3.ClassLoader functionality
+4.Can you override run() method.
+5.Thread communication within Threadpool
+6.How do you create ThreadPoolExecutor
+7.SerialVersionID
+8.Volatile vs transient
+9.SerialVersionId exception
+10. Main Thread has to monitor set of threads how do you implement
+   ThreadPoolExecutor
+11.Howmany locks in java
+12.Design pattern used in ConcurrentHashMap
+13.How to avoid duplicates using ArrayList
+14.Comparator vs Comparable
+
+
+1.Types of Containers in Spring.
+2.@AutoWired
+3.How to maintain only Singleton Object
+4.ProtoType vs Singleton in Spring.
+5.BeanLifeCycle
